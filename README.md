@@ -1,7 +1,7 @@
 # Pathfinder
 
 ## Description
-This program finds the shortest path for a point-shaped robot in a 2D space with polygonal obstacles. The robot starts at a specified point and aims to reach a goal point, avoiding obstacles along the way.
+This program finds the optimal path for a point-shaped robot in a 2D space with polygonal obstacles. The robot starts at a specified point and aims to reach a goal point, avoiding obstacles along the way.
 
 ## Features
 - **Pathfinding**: Uses the A* algorithm to find the shortest path.
@@ -21,7 +21,7 @@ This program finds the shortest path for a point-shaped robot in a 2D space with
     ./install.sh  # On Unix-based systems
     ```
 
-2. **Option 2: Install the pathfinder package directly**:
+2. **Option 2: Install the package directly**:
     ```bash
     pip install -e .
     ```
@@ -54,7 +54,14 @@ max_acceleration: 1.0
 
 3. **Output**:
     - The shortest path will be saved to an output file named as passed in the program arguments or to `solution.txt` if no file name was provided.
-    - Plots of the scene and solution will be saved as `scene.png` and `solution.png` respectively, only if  the `--plot` flag is passed.
+    - Plots of the scene and solution will be saved as `scene.png` and `solution.png` respectively, only if the `--plot` flag is passed.
+
+## Parameters
+
+- `pathfinder`: The program name or entry point for running the pathfinding application.
+- `config_file.yaml`: Path to the input YAML configuration file that contains the start and goal points, space size, obstacles, mass, and maximum acceleration.
+- `output_file.txt` (optional): Path to the output solution file where the shortest path will be saved. If not provided, the default output file is `solution.txt`.
+- `--plot` (optional): Flag to indicate that plot images of the scene and solution should be generated.
 
 ## Limitations and Assumptions
 - **Limitations**:

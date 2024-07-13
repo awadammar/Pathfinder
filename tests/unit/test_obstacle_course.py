@@ -1,12 +1,13 @@
+import os
 import unittest
 
 from shapely.geometry import Polygon
-from src.pathfinder.configuration import Configuration
+from pathfind.configuration import Configuration
 
-from src.pathfinder.obstacle_course import ObstacleCourse
-from src.pathfinder.path_strategy import ShortestPathStrategy
-from src.utils.graph_factory import create_graph, is_line_crossing_obstacles
-from src.utils.validation import check_for_overlaps_and_exceeding_bounds, validate_obstacles
+from pathfind.obstacle_course import ObstacleCourse
+from pathfind.path_strategy import ShortestPathStrategy
+from utils.graph_factory import create_graph, is_line_crossing_obstacles
+from utils.validation import check_for_overlaps_and_exceeding_bounds, validate_obstacles
 
 
 class TestObstacleCourse(unittest.TestCase):
@@ -14,16 +15,15 @@ class TestObstacleCourse(unittest.TestCase):
     def setUp(self):
         with open('tests/config.yaml', 'w') as f:
             f.write("""
-        x_start: 2
-        y_start: 2
-        x_goal: 98
-        y_goal: 98
-        x_space_size: 100
-        y_space_size: 100
-        list_obstacles: [
-        [[0,0], [100,0], [100,100], [0, 100]],
-        ]
-        """)
+x_start: 2
+y_start: 2
+x_goal: 98
+y_goal: 98
+x_space_size: 100
+y_space_size: 100
+list_obstacles: [
+        [[0,0], [100,0], [100,100], [0, 100]]
+]""")
 
         self.config = Configuration('tests/config.yaml')
         self.obstacle_course = ObstacleCourse(
@@ -107,6 +107,9 @@ class TestObstacleCourse(unittest.TestCase):
         self.assertTrue(is_line_crossing_obstacles(
             line_inside_obstacle, obstacles))
 
+    def tearDown(self):
+        # Clean up inupt file
+        os.remove('tests/config.yaml')
 
 if __name__ == '__main__':
     unittest.main()

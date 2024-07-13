@@ -1,4 +1,4 @@
-from src.pathfinder.path_strategy import PathStrategy
+from pathfind.path_strategy import PathStrategy
 from heapq import heappush, heappop
 
 class Pathfinder:

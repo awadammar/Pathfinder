@@ -36,7 +36,7 @@ class TestEndToEnd(unittest.TestCase):
 
         # Run the main program with the configuration file
         result = subprocess.run(
-            [sys.executable, './src/pathfinder/main.py', 'tests/config.yaml',
+            [sys.executable, './src/pathfind/main.py', 'tests/config.yaml',
                 self.output_file, self.plot_flag],
             capture_output=True,
             text=True

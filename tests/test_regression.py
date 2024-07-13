@@ -1,9 +1,9 @@
 import os
 import unittest
-from src.pathfinder.configuration import Configuration
+from pathfind.configuration import Configuration
 
-from src.pathfinder.obstacle_course import ObstacleCourse
-from src.pathfinder.path_strategy import ShortestPathStrategy
+from pathfind.obstacle_course import ObstacleCourse
+from pathfind.path_strategy import ShortestPathStrategy
 
 
 class TestRegression(unittest.TestCase):
@@ -31,16 +31,15 @@ class TestRegression(unittest.TestCase):
         # Enclosing the entire space
         with open('tests/config.yaml', 'w') as f:
             f.write("""
-        x_start: 2
-        y_start: 2
-        x_goal: 98
-        y_goal: 98
-        x_space_size: 100
-        y_space_size: 100
-        list_obstacles: [
-        [[0,0], [100,0], [100,100], [0, 100]],
-        ]
-        """)
+x_start: 2
+y_start: 2
+x_goal: 98
+y_goal: 98
+x_space_size: 100
+y_space_size: 100
+list_obstacles: [
+        [[0,0], [100,0], [100,100], [0, 100]]
+]""")
 
         config = Configuration('tests/config.yaml')
 

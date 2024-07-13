@@ -1,9 +1,9 @@
 from shapely.geometry import Polygon
 
-from src.pathfinder.pathfinder import Pathfinder
-from src.utils.graph_factory import create_graph
-from src.utils.plotter import Plotter
-from src.utils.validation import check_for_overlaps_and_exceeding_bounds, is_point_in_bounds, validate_obstacles
+from pathfind.pathfinder import Pathfinder
+from utils.graph_factory import create_graph
+from utils.plotter import Plotter
+from utils.validation import check_for_overlaps_and_exceeding_bounds, is_point_in_bounds, validate_obstacles
 
 
 class ObstacleCourse:

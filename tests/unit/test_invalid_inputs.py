@@ -8,7 +8,7 @@ class TestInvalidInputs(unittest.TestCase):
 
     def run_program(self, args):
         result = subprocess.run(
-            [sys.executable, './src/pathfinder/main.py'] + args,
+            [sys.executable, './src/pathfind/main.py'] + args,
             capture_output=True,
             text=True
         )

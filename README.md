@@ -31,21 +31,21 @@ This program finds the optimal path for a point-shaped robot in a 2D space with 
     - Edit your configuration file to set the start and goal points, space size, obstacles, mass, and maximum acceleration.
     - Example configuration:
     
-```yaml:tests/config.yaml
-x_start: 2
-y_start: 2
-x_goal: 98
-y_goal: 98
-x_space_size: 100
-y_space_size: 100
-list_obstacles: [
-[[5,5], [10,5], [8,12]],
-[[50,60], [70,40], [80,90], [60,80]],
-[[60, 60], [60, 80], [80, 80], [80, 60]]
-]
-mass: 1.0
-max_acceleration: 1.0
-```
+    ```yaml:tests/config.yaml
+    x_start: 2
+    y_start: 2
+    x_goal: 98
+    y_goal: 98
+    x_space_size: 100
+    y_space_size: 100
+    list_obstacles: [
+        [[5,5], [10,5], [8,12]],
+        [[50,60], [70,40], [80,90], [60,80]],
+        [[60, 60], [60, 80], [80, 80], [80, 60]]
+    ]
+    mass: 1.0
+    max_acceleration: 1.0
+    ```
 
 2. **Run the program**:
     ```bash
@@ -54,7 +54,12 @@ max_acceleration: 1.0
 
 3. **Output**:
     - The shortest path will be saved to an output file named as passed in the program arguments or to `solution.txt` if no file name was provided.
+        - **Solution Path**: [[2, 2], [10.0, 5.0], [70.0, 40.0], [80.0, 60.0], [98, 98]]
     - Plots of the scene and solution will be saved as `scene.png` and `solution.png` respectively, only if the `--plot` flag is passed.
+        - **Scene Plot**:  
+        ![Scene Plot](/example/scene.png)
+        - **Solution Plot**:  
+        ![Solution Plot](/example/solution.png)
 
 ## Parameters
 

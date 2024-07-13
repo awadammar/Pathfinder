@@ -1,9 +1,5 @@
 import yaml
 
-ROBOT_MASS_DEFAULT_VALUE = 1.0
-ROBOT_ACCELERATION_DEFAULT_VALUE = 1.0
-
-
 class Configuration:
     def __init__(self, config_path):
         """
@@ -41,7 +37,7 @@ class Configuration:
         self.y_space_size = config['y_space_size']
         self.obstacles = config['list_obstacles']
         # Default mass to 1.0 if not specified
-        self.mass = config.get('mass', ROBOT_MASS_DEFAULT_VALUE)
+        self.mass = config.get('mass')
         # Default max acceleration to 1.0 if not specified
         self.max_acceleration = config.get(
-            'max_acceleration', ROBOT_ACCELERATION_DEFAULT_VALUE)
+            'max_acceleration')

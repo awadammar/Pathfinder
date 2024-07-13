@@ -1,7 +1,8 @@
 import math
+from abc import ABC, abstractmethod
 
 
-class PathStrategy:
+class PathStrategy(ABC):
     def euclidean_distance(self, start_node, end_node):
         """
         Calculate the Euclidean distance between two points.
@@ -14,7 +15,8 @@ class PathStrategy:
         - float: The Euclidean distance between the points.
         """
         return math.sqrt((start_node[0] - end_node[0])**2 + (start_node[1] - end_node[1])**2)
-
+    
+    @abstractmethod
     def calculate_travel_cost(self, start, goal, mass, max_acceleration):
         pass
 

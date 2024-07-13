@@ -10,16 +10,16 @@ class TestEndToEnd(unittest.TestCase):
     def setUp(self):
         with open('tests/config.yaml', 'w') as f:
             f.write("""
-        x_start: 2
-        y_start: 2
-        x_goal: 98
-        y_goal: 98
-        x_space_size: 100
-        y_space_size: 100
-        list_obstacles: [
-        [[5,5], [10,5], [8,12]],
-        [[50,60], [70,40], [80,90], [60,80]]
-        ]
+x_start: 2
+y_start: 2
+x_goal: 98
+y_goal: 98
+x_space_size: 100
+y_space_size: 100
+list_obstacles: [
+[[5,5], [10,5], [8,12]],
+[[50,60], [70,40], [80,90], [60,80]]
+]
         """)
 
         # Load the configuration file

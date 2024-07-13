@@ -1,13 +1,14 @@
 from shapely.geometry import Polygon
 
 from pathfind.pathfinder import Pathfinder
+from pathfind.path_strategy import FastestPathStrategy, ShortestPathStrategy
 from utils.graph_factory import create_graph
 from utils.plotter import Plotter
 from utils.validation import check_for_overlaps_and_exceeding_bounds, is_point_in_bounds, validate_obstacles
 
 
 class ObstacleCourse:
-    def __init__(self, config, path_finding_strategy):
+    def __init__(self, config):
         """
         Initialize the obstacle course with start and goal points, space size, and obstacles.
 
@@ -22,8 +23,9 @@ class ObstacleCourse:
         self.mass = config.mass
         self.max_acceleration = config.max_acceleration
         self.obstacles = [Polygon(obstacle) for obstacle in config.obstacles]
+
         self.validate_course()
-        self.pathfinder = Pathfinder(path_finding_strategy)
+        self.strategy = self.determine_path_finiding_startegy(config)
 
     def validate_course(self):
         """
@@ -49,7 +51,8 @@ class ObstacleCourse:
         - Exception: If no valid path is found.
         """
         graph = create_graph(self.start, self.goal, self.obstacles)
-        return self.pathfinder.find_path(graph, tuple(self.start), tuple(self.goal), self.mass, self.max_acceleration)
+        pathfinder = Pathfinder(self.strategy)
+        return pathfinder.find_path(graph, tuple(self.start), tuple(self.goal), self.mass, self.max_acceleration)
 
     def plot(self, path):
         """
@@ -60,3 +63,9 @@ class ObstacleCourse:
         """
         Plotter.plot_scene(path, self.start, self.goal,
                            self.obstacles, self.x_space_size, self.y_space_size)
+
+    def determine_path_finiding_startegy(self, config):
+        if config.max_acceleration is not None and config.mass is not None:
+            return FastestPathStrategy()
+        else:
+            return ShortestPathStrategy()

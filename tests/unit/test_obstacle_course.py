@@ -5,7 +5,6 @@ from shapely.geometry import Polygon
 from pathfind.configuration import Configuration
 
 from pathfind.obstacle_course import ObstacleCourse
-from pathfind.path_strategy import ShortestPathStrategy
 from utils.graph_factory import create_graph, is_line_crossing_obstacles
 from utils.validation import check_for_overlaps_and_exceeding_bounds, validate_obstacles
 
@@ -27,7 +26,7 @@ list_obstacles: [
 
         self.config = Configuration('tests/config.yaml')
         self.obstacle_course = ObstacleCourse(
-            self.config, ShortestPathStrategy)
+            self.config)
 
     def test_validate_obstacles(self):
         # Test valid obstacles

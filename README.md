@@ -4,10 +4,17 @@
 This program finds the optimal path for a point-shaped robot in a 2D space with polygonal obstacles. The robot starts at a specified point and aims to reach a goal point, avoiding obstacles along the way.
 
 ## Features
-- **Pathfinding**: Uses the A* algorithm to find the shortest path.
+- **Pathfinding**: Uses the Dijkstra algorithm to find the shortest path.
 - **Obstacle Validation**: Ensures obstacles are valid and do not overlap or exceed bounds.
 - **Visualization**: Plots the obstacles, start and goal points, and the computed path.
 - **Configuration**: Easily configurable via a YAML file.
+
+## Operating Modes
+
+The program operates in two modes based on the provided configuration YAML file:
+
+- **Shortest Path Mode**: This is the default mode where the program calculates the shortest path from the start to the goal point.
+- **Fastest Path Mode**: If `mass` and `max_acceleration` are provided in the configuration, the tool will calculate the fastest path instead of the shortest path.
 
 ## Requirements
 - Python 3.12+
@@ -43,8 +50,6 @@ This program finds the optimal path for a point-shaped robot in a 2D space with 
         [[50,60], [70,40], [80,90], [60,80]],
         [[60, 60], [60, 80], [80, 80], [80, 60]]
     ]
-    mass: 1.0
-    max_acceleration: 1.0
     ```
 
 2. **Run the program**:

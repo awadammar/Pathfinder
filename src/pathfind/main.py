@@ -5,7 +5,6 @@ import logging
 import os
 import sys
 from pathfind.obstacle_course import ObstacleCourse
-from pathfind.path_strategy import FastestPathStrategy
 from pathfind.configuration import Configuration
 
 # Configure logging
@@ -39,8 +38,7 @@ def main():
 
     # Find fastest path
     try:
-        path_finding_strategy = FastestPathStrategy()
-        obstacle_course = ObstacleCourse(config, path_finding_strategy)
+        obstacle_course = ObstacleCourse(config)
         path = obstacle_course.find_path()
     except Exception as e:
         LOGGER.error(f"{e}")

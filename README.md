@@ -10,7 +10,7 @@ This program finds the shortest path for a point-shaped robot in a 2D space with
 - **Configuration**: Easily configurable via a YAML file.
 
 ## Requirements
-- Python 3.6+
+- Python 3.12+
 - Virtual environment (recommended)
 
 ## Installation

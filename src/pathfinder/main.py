@@ -4,9 +4,9 @@ import argparse
 import logging
 import os
 import sys
-from src.pathfinder.obstacle_course import ObstacleCourse
-from src.pathfinder.path_strategy import FastestPathStrategy
-from src.pathfinder.configuration import Configuration
+from obstacle_course import ObstacleCourse
+from path_strategy import FastestPathStrategy
+from configuration import Configuration
 
 # Configure logging
 logging.basicConfig(level=logging.WARNING)

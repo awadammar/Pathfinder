@@ -66,7 +66,7 @@ class Pathfinder:
         """
         path = []
         while node in parents:
-            path.append(node)
+            path.append(list(map(float, node)))
             node = parents[node]
-        path.append(start)
+        path.append(list(map(float, start)))
         return path[::-1]

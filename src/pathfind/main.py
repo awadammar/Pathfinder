@@ -45,10 +45,9 @@ def main():
         sys.exit(1)
 
     # Save solution to file
-    nodes = [list(t) for t in path]
     try:
         with open(args.output, 'w') as f:
-            f.write(str(nodes))
+            f.write(str(path))
     except Exception as e:
         LOGGER.error(f"Failed to write solution to '{args.output}'. {e}")
         sys.exit(1)

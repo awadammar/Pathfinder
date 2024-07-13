@@ -46,9 +46,8 @@ The program operates in two modes based on the provided configuration YAML file:
     x_space_size: 100
     y_space_size: 100
     list_obstacles: [
-        [[5,5], [10,5], [8,12]],
-        [[50,60], [70,40], [80,90], [60,80]],
-        [[60, 60], [60, 80], [80, 80], [80, 60]]
+        [[5,5], [20,5], [-4,19]],
+        [[50,60], [70,40], [110,90], [60,80]]
     ]
     ```
 
@@ -59,7 +58,7 @@ The program operates in two modes based on the provided configuration YAML file:
 
 3. **Output**:
     - The shortest path will be saved to an output file named as passed in the program arguments or to `solution.txt` if no file name was provided.
-        - **Solution Path**: [[2, 2], [10.0, 5.0], [70.0, 40.0], [80.0, 60.0], [98, 98]]
+        - **Solution Path**: [[2.0, 2.0], [20.0, 5.0], [60.0, 80.0], [98.0, 98.0]]
     - Plots of the scene and solution will be saved as `scene.png` and `solution.png` respectively, only if the `--plot` flag is passed.
         - **Scene Plot**:  
         ![Scene Plot](/example/scene.png)

@@ -3,7 +3,7 @@ from shapely.geometry import Polygon
 from pathfind.pathfinder import Pathfinder
 from pathfind.path_strategy import FastestPathStrategy, ShortestPathStrategy
 from utils.graph_factory import create_graph
-from utils.plotter import Plotter
+from utils.plotter import plot_scene
 from utils.validation import check_for_overlaps_and_exceeding_bounds, is_point_in_bounds, validate_obstacles
 
 
@@ -50,7 +50,8 @@ class ObstacleCourse:
         Raises:
         - Exception: If no valid path is found.
         """
-        graph = create_graph(self.start, self.goal, self.obstacles)
+        graph = create_graph(self.start, self.goal, self.obstacles,
+                             self.x_space_size, self.y_space_size)
         pathfinder = Pathfinder(self.strategy)
         return pathfinder.find_path(graph, tuple(self.start), tuple(self.goal), self.mass, self.max_acceleration)
 
@@ -61,7 +62,7 @@ class ObstacleCourse:
         Parameters:
         - path (list): The computed path as a list of points.
         """
-        Plotter.plot_scene(path, self.start, self.goal,
+        plot_scene(path, self.start, self.goal,
                            self.obstacles, self.x_space_size, self.y_space_size)
 
     def determine_path_finiding_startegy(self, config):

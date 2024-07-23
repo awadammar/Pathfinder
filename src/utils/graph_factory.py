@@ -1,9 +1,10 @@
 import numpy as np
 import networkx as nx
-from shapely.geometry import LineString, Point
+from shapely import Point
+from shapely.geometry import LineString
 
 
-def create_graph(start, goal, obstacles):
+def create_graph(start, goal, obstacles, x_space_size, y_space_size):
     """
     Create a graph where nodes are points and edges are valid paths between points.
 
@@ -21,7 +22,10 @@ def create_graph(start, goal, obstacles):
 
     nodes = [start, goal]
     for polygon in obstacles:
-        nodes.extend(polygon.exterior.coords[:-1])
+        polygon_points = polygon.exterior.coords[:-1]
+        within_space_polygon_points = list(filter(
+            lambda p: p[0] < x_space_size and p[1] < y_space_size, polygon_points))
+        nodes.extend(within_space_polygon_points)
 
     for i in range(len(nodes)):
         for j in range(i + 1, len(nodes)):
@@ -34,20 +38,20 @@ def create_graph(start, goal, obstacles):
     return G
 
 
-def is_line_crossing_obstacles(line, obstacles):
+def is_line_crossing_obstacles(line_points, obstacles):
     """
     Check if a given line crosses any obstacle.
 
     Parameters:
-    - line (list): A list of two points defining the line.
+    - line_points (list): A list of two points defining the line.
     - obstacles (list): A list of shapely Polygon objects.
 
     Returns:
     - bool: True if the line crosses any obstacle, False otherwise.
     """
-    line_geom = LineString(line)
+    line = LineString(line_points)
     for polygon in obstacles:
-        # Check if both points in the same polygon -> polygon.covers(line_geom)
-        if polygon.covers(line_geom) or line_geom.crosses(polygon):
+        if line.intersects(polygon) and not line.touches(polygon):
             return True
+
     return False

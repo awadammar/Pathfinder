@@ -70,7 +70,7 @@ list_obstacles: [
 
     def test_create_graph(self):
         graph = create_graph(self.config.start, self.config.goal, [
-                             Polygon(obstacle) for obstacle in self.config.obstacles])
+                             Polygon(obstacle) for obstacle in self.config.obstacles], self.config.x_space_size, self.config.y_space_size)
         self.assertIn(tuple(self.config.start), graph.nodes)
         self.assertIn(tuple(self.config.goal), graph.nodes)
 

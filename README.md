@@ -1,4 +1,7 @@
 # Pathfinder
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a4f7347d-a016-45a5-b5b7-494fd94b7506">
+</p>
 
 ## Description
 This program finds the optimal path for a point-shaped robot in a 2D space with polygonal obstacles. The robot starts at a specified point and aims to reach a goal point, avoiding obstacles along the way.
